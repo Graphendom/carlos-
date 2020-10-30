@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Set RKWard suite standards</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rktest.setSuiteStandards {rkwardtests}"><tr><td>rktest.setSuiteStandards {rkwardtests}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Set RKWard suite standards</h2>
+
+<h3>Description</h3>
+
+<p>Set RKWard plugin test suite standards
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  rktest.setSuiteStandards(suite, testroot=getwd(),
+    file=TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>suite</code></td>
+<td>
+<p>Character string naming the test suite to
+set standards for.</p>
+</td></tr>
+<tr valign="top"><td><code>testroot</code></td>
+<td>
+<p>Path to the test root directory, defaults
+to the working directory.</p>
+</td></tr>
+<tr valign="top"><td><code>file</code></td>
+<td>
+<p>Logical: If <code>suite</code> is already a present
+R object, set this to FALSE.  Otherwise it is assumed to
+be a file and fed to <code>source</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Use this function after you plugin passed all tests to
+set the resulting code, output and R messages as the
+standard that will be compared to during following tests.
+</p>
+
+
+<h3>Value</h3>
+
+<p>The function simply copies the previously created files
+from the temporary directory to the directory containing
+the test standards (inside the testroot).
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier
+<a href="mailto:thomas.friedrichsmeier@ruhr-uni-bochum.de">thomas.friedrichsmeier@ruhr-uni-bochum.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="RKTestSuite.html">RKTestSuite-class</a></code>,
+<code><a href="rktest.makeplugintests.html">rktest.makeplugintests</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+rktest.setSuiteStandards("rkward_application_tests.R")
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkwardtests</em> version 0.6.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

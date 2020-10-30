@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Run RKWard plugin test suite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rktest.makeplugintests {rkwardtests}"><tr><td>rktest.makeplugintests {rkwardtests}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Run RKWard plugin test suite</h2>
+
+<h3>Description</h3>
+
+<p>Run a whole RKWard plugin test suite
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  rktest.makeplugintests(testsuites="testsuite.R",
+    testroot=getwd(), outfile="make_plugintests.txt",
+    append=FALSE, test.id=NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>testsuites</code></td>
+<td>
+<p>A character string or vector naming the
+test suites to be run.</p>
+</td></tr>
+<tr valign="top"><td><code>testroot</code></td>
+<td>
+<p>A character string pointing to the root
+directory where the test suite resides (including its
+folder with test standards).</p>
+</td></tr>
+<tr valign="top"><td><code>outfile</code></td>
+<td>
+<p>A character string giving a file name for
+the result log.</p>
+</td></tr>
+<tr valign="top"><td><code>append</code></td>
+<td>
+<p>If TRUE, append output to an existing
+file.</p>
+</td></tr>
+<tr valign="top"><td><code>test.id</code></td>
+<td>
+<p>Optional character string or vector naming
+one or more tests of a suite to be run (if NULL, all
+tests are run).</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The function <code>rktest.makeplugintests</code> will run a
+whole test suite that was prepared to check one or
+several RKWard plugins.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Results are printed to stdout and saved to the defined
+output file.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier
+<a href="mailto:thomas.friedrichsmeier@ruhr-uni-bochum.de">thomas.friedrichsmeier@ruhr-uni-bochum.de</a>, Meik
+Michalke <a href="mailto:meik.michalke@uni-duesseldorf.de">meik.michalke@uni-duesseldorf.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="RKTestSuite.html">RKTestSuite-class</a></code>,
+<code><a href="RKTestResult.html">RKTestResult-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+rktest.makeplugintests(testsuites=c("rkward_application_tests.R",
+   "import_export_plugins.R"), testroot=getwd())
+rktest.makeplugintests(testsuites="distribution.R",
+  testroot=getwd(), test.id=c("poisson_quantiles", "geom_quantiles"))
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkwardtests</em> version 0.6.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

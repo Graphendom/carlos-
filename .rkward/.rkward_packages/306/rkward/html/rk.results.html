@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Print objects and results to output</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.print {rkward}"><tr><td>rk.print {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Print objects and results to output</h2>
+
+<h3>Description</h3>
+
+<p>Various utilty functions which can be used to print or export R objects to
+the (html) output file. The output file can be accessed from Windows -&gt; Show
+Output. Basically, these functions along with the ones described in
+<code><a href="rk.label.html">rk.get.label</a></code>, <code><a href="rk.get.tempfile.name.html">rk.get.tempfile.name</a></code>, and
+<code><a href="rk.graph.on.html">rk.graph.on</a></code> can be used to create a HTML report.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.print(x, ...)
+
+rk.print.code(code)
+
+rk.header(title, parameters = list(), level = 1, toc = NULL)
+
+rk.results(x, titles = NULL, print.rownames)
+
+rk.print.literal(x)
+
+rk.describe.alternative(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>any R object to be printed/exported. A suitable list in case of
+<code>rk.describe.alternative</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>code</code></td>
+<td>
+<p>a character vector (single string) of R code</p>
+</td></tr>
+<tr valign="top"><td><code>title</code></td>
+<td>
+<p>a string, used as a header for the html output</p>
+</td></tr>
+<tr valign="top"><td><code>parameters</code></td>
+<td>
+<p>a list, preferably named, giving a list of &quot;parameters&quot; to
+be printed to the output</p>
+</td></tr>
+<tr valign="top"><td><code>level</code></td>
+<td>
+<p>an integer, header level. For example, <code>level=2</code> creates
+the header with <code>&lt;h2&gt;&lt;/h&gt;</code> tag.</p>
+</td></tr>
+<tr valign="top"><td><code>toc</code></td>
+<td>
+<p>If <code>NULL</code>, the default, <code>rk.header()</code> will automatically
+add headers h1 to h4 to the TOC menu of the output document. <code>TRUE</code> will always
+add the header, and <code>FALSE</code> will suppress it.</p>
+</td></tr>
+<tr valign="top"><td><code>titles</code></td>
+<td>
+<p>a character vector, giving the column headers for a html
+table.</p>
+</td></tr>
+<tr valign="top"><td><code>print.rownames</code></td>
+<td>
+<p>controls printing of rownames. TRUE to force printing,
+FALSE to suppress printing, omitted (default) to print rownames, unless
+they are plain row numbers.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p><code>rk.print</code> prints/exports the given object to the output (html) file
+using the <code><a href="../../R2HTML/html/HTML.html">HTML</a></code> function. This requires the <code>R2HTML</code>
+package. Additional arguments in <code>...</code> are passed on to
+<code><a href="../../R2HTML/html/HTML.html">HTML</a></code>. For some types of objects (e.g. &quot;htmlwidgets&quot; from
+the &quot;htmlwidgets&quot; package) additional packages may be required.
+</p>
+<p><code>rk.print.literal</code> prints/exports the given object using a
+<code>paste(x, collapse="\n")</code> construct to the output (html) file.
+</p>
+<p><code>rk.print.code</code> applies syntax highlighting to the given code string,
+and writes it to the output (html) file.
+</p>
+<p><code>rk.header</code> prints a header / caption, possibly with parameters, to the
+output file. See example.
+</p>
+<p><code>rk.results</code> is similar to <code>rk.print</code> but prints in a more
+tabulated fashion. This has been implemented only for certain types of
+<code>x</code>: tables, lists (or data.frames), and vectors. See example.
+</p>
+<p><code>rk.describe.alternatives</code> describes the alternative (H1) hypothesis of
+a <code>htest</code>. This is similar to <code>stats:::print.htext</code> and makes
+sense only when <code>x$alternatives</code> exists.
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>rk.describe.alternatives</code> returns a string while all other
+functions return <code>NULL</code>, invisibly.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../R2HTML/html/HTML.html">HTML</a></code>, <code><a href="rk.get.tempfile.name.html">rk.get.output.html.file</a></code>,
+<code><a href="rk.label.html">rk.get.description</a></code>, <code><a href="rk.call.plugin.html">rk.call.plugin</a></code>,
+<a href="rkward://page/rkward_output">rkward://page/rkward_output</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+require (rkward)
+require (R2HTML)
+
+## see the output: Windows-&gt;Show Output
+## stolen from the two-sample t-test plugin ;)
+local({
+x1 &lt;- rnorm (100)
+x2 &lt;- rnorm (100, 2)
+nm &lt;- rk.get.description (x1,x2)
+
+result &lt;- t.test (x1, x2, alternative="less")
+rk.print.code ("result &lt;- t.test (x1, x2, alternative=\"less\")")
+
+rk.header (result$method,
+  parameters=list ("Comparing", paste (nm[1], "against", nm[2]),
+  "H1", rk.describe.alternative (result),
+  "Equal variances", "not assumed"))
+
+rk.print.literal ("Raw data (first few rows):")
+rk.print (head (cbind (x1,x2)), align = "left")
+
+rk.print.literal ("Test results:")
+rk.results (list (
+  'Variable Name'=nm,
+  'estimated mean'=result$estimate,
+  'degrees of freedom'=result$parameter,
+  t=result$statistic,
+  p=result$p.value,
+  'confidence interval percent'=(100 * attr(result$conf.int, "conf.level")),
+  'confidence interval of difference'=result$conf.int ))
+})
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

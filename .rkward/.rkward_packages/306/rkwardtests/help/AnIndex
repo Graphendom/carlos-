@@ -1,0 +1,16 @@
+rkwardtests-package	rkwardtests-package
+.rk.rerun.plugin.link.replacement	rktest.replaceRunAgainLink
+c("RKTestResult\n", "-class")	RKTestResult-class
+c("RKTestSuite\n", "-class")	RKTestSuite-class
+c("RKTest\n", "-class")	RKTest-class
+RKTest	RKTest-class
+rktest.getTempDir	rktest.getTempDir
+rktest.makeplugintests	rktest.makeplugintests
+rktest.replaceRunAgainLink	rktest.replaceRunAgainLink
+rktest.runRKTestSuite	rktest.runRKTestSuite
+rktest.setSuiteStandards	rktest.setSuiteStandards
+RKTestResult	RKTestResult-class
+RKTestSuite	RKTestSuite-class
+rkwardtests	rkwardtests-package
+show	show
+show,RKTestResult-method	show

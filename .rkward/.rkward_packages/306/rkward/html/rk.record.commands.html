@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Start recording commands that are submitted from RKWard to R</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.record.commands {rkward}"><tr><td>rk.record.commands {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Start recording commands that are submitted from RKWard to R</h2>
+
+<h3>Description</h3>
+
+<p>To stop recording, supply NULL or &quot;&quot; as filename.
+Currently used for the purpose of automated testing, only. Perhaps in the future
+this or a similar mechanism could also be added as a user feature.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.record.commands(filename, include.all = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>filename</code></td>
+<td>
+<p>filename to write to (file will be truncated!).</p>
+</td></tr>
+<tr valign="top"><td><code>include.all</code></td>
+<td>
+<p>By default,
+some types of command are filtered (internal synchronisation commands, and run again links). Should these be included?</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

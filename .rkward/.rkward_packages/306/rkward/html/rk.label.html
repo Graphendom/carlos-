@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Various label related utility functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.get.label {rkward}"><tr><td>rk.get.label {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Various label related utility functions</h2>
+
+<h3>Description</h3>
+
+<p><code>rk.get.label</code> retrieves the rkward label (if any) of the given object.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.get.label(x)
+
+rk.set.label(x, label, envir = parent.frame())
+
+rk.list.labels(x, fill = FALSE)
+
+rk.get.short.name(x)
+
+.rk.make.short.name(x)
+
+rk.get.description(..., paste.sep = NULL, is.substitute = FALSE)
+
+rk.list(...)
+
+rk.list.names(..., deparse.level = 2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>any R object</p>
+</td></tr>
+<tr valign="top"><td><code>label</code></td>
+<td>
+<p>a string, to set the label attribute of an object</p>
+</td></tr>
+<tr valign="top"><td><code>envir</code></td>
+<td>
+<p>an environment, where the attribute is evaluated</p>
+</td></tr>
+<tr valign="top"><td><code>fill</code></td>
+<td>
+<p>a logical or character. See Details.</p>
+</td></tr>
+<tr valign="top"><td><code>paste.sep</code></td>
+<td>
+<p>a string, used as the <code>collapse</code> argument for paste</p>
+</td></tr>
+<tr valign="top"><td><code>is.substitute</code></td>
+<td>
+<p>a logical (not NA). See Details.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p><code>rk.set.label</code> sets the rkward label for the given object.
+</p>
+<p><code>rk.list.labels</code> retrieves the rkward labels for a list of objects.
+Most importantly, this can be used for extracting all column labels in a
+<code>data.frame</code>, conveniently. The parameter <code>fill</code> controls, what
+happens, when no rkward labels have been assigned. The default (<code>FALSE</code>)
+is to return empty strings for any missing labels. For <code>fill=TRUE</code>, missing
+labels will be filled with the short names of the object. You can also pass
+a character vector of default labels to use as the <code>fill</code> parameter.
+</p>
+<p><code>rk.get.short.name</code> creates a short name for the given object.
+</p>
+<p><code>rk.get.description</code> creates descriptive string(s) for each of the
+arguments in &quot;<code>...{}</code>&quot;; collapsing into a single string using
+<code>paste.sep</code> (if not NULL). If <code>is.substitute=TRUE</code>, the arguments
+will be deparsed, first, which can be useful when using
+<code>rk.get.description</code> inside a function.
+</p>
+<p><code>rk.list.names</code> returns the names of the arguments passed as
+<code>...</code>; when using <code>rk.list.names</code> inside a function, it may be
+necessary to increase the <code>deparse.level</code> level.
+</p>
+<p><code>rk.list</code> returns a list of its arguments, with <code>names</code> set as
+returned by <code>rk.get.description()</code>. This can be used as a drop-in
+replacement for <code><a href="../../base/html/list.html">list</a></code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>rk.set.label</code> returns the result of the evaluation of &quot;setting
+the label&quot; while the others return a character vector.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+x &lt;- data.frame(a=c(1:3), b=c(2:4))
+rk.set.label(x[["a"]], "First column")
+rk.get.short.name (x$a)                   # "x$a"
+rk.get.label (x$a)                        # "First column"
+rk.get.description (x$a)                  # "x$a (First column)"
+rk.list.labels (x)                        # "First column" ""
+rk.list.labels (x, TRUE)                  # "First column" "b"
+rk.list.names (x, x$a, x$b)               # "x" "x$a" "x$b"
+names (rk.list (x$a, x$b))                # "x$a (First column)" "x$b"
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

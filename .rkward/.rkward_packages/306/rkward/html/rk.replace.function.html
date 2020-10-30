@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Replace a function inside its package environment / namespace</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.replace.function {rkward}"><tr><td>rk.replace.function {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Replace a function inside its package environment / namespace</h2>
+
+<h3>Description</h3>
+
+<p><code>rk.replace.function</code> can be used to replace a function inside a
+different package / namespace. It is mainly intended for internal usage
+inside rkward, e.g. to replace <code>menu</code> and <code>select.list</code> with
+appropriate GUI implementations.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.replace.function(functionname, environment, replacement,
+  copy.formals = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>functionname</code></td>
+<td>
+<p>name of the function to be replaced (character).</p>
+</td></tr>
+<tr valign="top"><td><code>environment</code></td>
+<td>
+<p>package environment or namespace, where replacment should
+be done.</p>
+</td></tr>
+<tr valign="top"><td><code>replacement</code></td>
+<td>
+<p>the replacement. This should be a function.</p>
+</td></tr>
+<tr valign="top"><td><code>copy.formals</code></td>
+<td>
+<p>logical; whether to copy the <code><a href="../../base/html/formals.html">formals</a></code> from
+the original function.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The original function is assigned to the environment
+<code>rkward::.rk.backups</code> with the same name as the original, and can be
+referred to from the replacement. WARNING: This mechanism does not support
+several subsequent replacments of the same function, nor does it support
+replacement of generics.
+</p>
+<p><b>WARNING</b>: This function can be used to alter - and disrupt - internal
+functions in arbitrary ways. You better know what you are doing.
+</p>
+<p><b>WARNING</b>: Does not work well on generics!
+</p>
+
+
+<h3>Value</h3>
+
+<p>Returns <code>NULL</code>, invisibly, unconditionally.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../utils/html/getFromNamespace.html">assignInNamespace</a></code>, <code><a href="../../base/html/debug.html">debug</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run
+rk.replace.function ("history", as.environment ("package:utils"),
+  function () {
+    cat ("This is what you typed:\n")
+    eval (body (.rk.backups$history))
+  })
+## End not run
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot graphics to HTML output file</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.graph.on {rkward}"><tr><td>rk.graph.on {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Plot graphics to HTML output file</h2>
+
+<h3>Description</h3>
+
+<p><code>rk.graph.on()</code> creates an R device that will plot to the output html page in RKWard (<a href="rkward://page/rkward_output">rkward://page/rkward_output</a>).
+The default settings for <code>device.type</code>, <code>width</code>, <code>height</code>,
+and <code>quality</code> can be modified from Settings -&gt; Configure RKWard -&gt; Output.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.graph.on(device.type = getOption("rk.graphics.type"),
+  width = getOption("rk.graphics.width"),
+  height = getOption("rk.graphics.height"), quality, ...)
+
+rk.graph.off()
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>device.type</code></td>
+<td>
+<p>Type of device to create / graphics format to use. Currently,
+supported devices are &quot;PNG&quot;, &quot;SVG&quot;, or &quot;JPG&quot;.
+The default is to use the format configured in Settings -&gt; Configure RKWard -&gt; Output.</p>
+</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>Width of graphics in pixels. The default is to use the width configured in Settings -&gt; Configure RKWard -&gt; Output.</p>
+</td></tr>
+<tr valign="top"><td><code>height</code></td>
+<td>
+<p>Height of graphics in pixels. The default is to use the heigth configured in Settings -&gt; Configure RKWard -&gt; Output.</p>
+</td></tr>
+<tr valign="top"><td><code>quality</code></td>
+<td>
+<p>For device.type &quot;JPG&quot;, quality of the JPG file from 0 to 100.
+The default is to use the quality configured in Settings -&gt; Configure RKWard -&gt; Output.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Further options will be passed to the graphics device used internally.
+</p>
+<p><b>Warning</b>: It is advised to use <code>rk.graph.off</code> and <b>not</b> <code>dev.off</code> to close the device opened by
+<code>rk.graph.on</code>. <code>dev.print(device = rk.graph.on)</code> is a <b>wrong</b> usage for this &quot;device,
+&quot; and will result in errors.</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><a href="rk.results.html">rk.results</a> <a href="rk.results.html">rk.print</a> <a href="rk.get.tempfile.name.html">rk.get.output.html.file</a> <a href="../../grDevices/html/dev.html">dev.off</a> <a href="../../grDevices/html/cairo.html">svg</a> <a href="../../grDevices/html/png.html">png</a> jpg
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+require (rkward)
+
+## Plot directly to the output (html) file, by-passing screen device:
+rk.graph.on ("JPG", 480, 480, 75)
+plot (rnorm (100))
+rk.graph.off ()
+
+## Copy the displayed plot to the output:
+plot (rnorm (100))
+dev.copy (device = rk.graph.on)
+rk.graph.off ()
+
+## WRONG USAGE: not run:
+#plot (rnorm (100))
+#dev.print (device = rk.graph.on)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

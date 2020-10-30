@@ -1,0 +1,49 @@
+.rk.with.window.hints   Control window placement and style
+RK                      Plot graphics to RKWard native device
+rk.adjust.system.path   Add one or more paths to the filesystem search
+                        path used in this session
+rk.assign.preview.data
+                        Manage (shortly) persistent data for previews
+                        (for use in RKWard plugins wishing to provide
+                        custom previews)
+rk.call.plugin          Call built-in RKWard plugin(s)
+rk.capture.output       Capture output including system commands
+rk.check.for.pandoc     Check for pandoc installation and its features
+rk.demo                 Opens an R demo script for editing
+rk.edit                 Edit / show an object / file
+rk.embed.device         Embed non-RKWard device windows
+rk.get.label            Various label related utility functions
+rk.get.tempfile.name    RKWard file names
+rk.graph.on             Plot graphics to HTML output file
+rk.list.plugins         List of modify loaded plugins
+rk.load.pluginmaps      (Re-)load the given pluginmap files into the
+                        RKWard GUI
+rk.old.packages         Slightly smarter variant of old.packages()
+rk.print                Print objects and results to output
+rk.printer.device       Device for printing using the KDE print dialog
+rk.record.commands      Start recording commands that are submitted
+                        from RKWard to R
+rk.record.plot          Record screen device history and duplicate a
+                        screen device
+rk.rename.in.container
+                        Miscellaneous utility functions
+rk.replace.function     Replace a function inside its package
+                        environment / namespace
+rk.save.workplace       Save or restore RKWard workplace
+rk.screen.device        DEPRECATED: 'rk.screen.device' is obsolete. It
+                        simply calls 'dev.new()' in this version of
+                        RKWard.
+rk.sessionInfo          Print information on the RKWard session
+rk.show.message         Message boxes and selection list using native
+                        KDE GUI
+rk.switch.frontend.language
+                        Switch language / translation to use in the
+                        frontend.
+rk.sync                 Sync R object(s)
+rk.without.plot.history
+                        Run a (plotting) action, without recording
+                        anything in the plot history. Internally, the
+                        plot history option is turned off for the
+                        duration of the action.
+rkward-package          Provides functions related to the RKWard GUI
+test                    ~~function to do ... ~~

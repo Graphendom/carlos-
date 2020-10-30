@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Switch language / translation to use in the frontend.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.switch.frontend.language {rkward}"><tr><td>rk.switch.frontend.language {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Switch language / translation to use in the frontend.</h2>
+
+<h3>Description</h3>
+
+<p>This feature is mostly intended for the purpose of automated testing, which needs a
+defined language to work. It might also be useful for translators, or e.g. to look up
+some terms untranslated in special cases where you are more familiar with the English terms than
+your native language terms. Note that this will only strings that are translated after the call.,
+only those which get
+translated after the call. Most new dialogs you open,
+and importantly new plugin dialogs should
+show strings in the new lanuage, however.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.switch.frontend.language(LANG = "C")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>LANG</code></td>
+<td>
+<p>language code to use. &quot;C&quot; for no translation, i.e. generally English</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>To change the language in the backend,
+use <code>Sys.setenv(LANGUAGE=...)</code> or <code>Sys.setlocale()</code>.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

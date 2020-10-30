@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Check for pandoc installation and its features</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.check.for.pandoc {rkward}"><tr><td>rk.check.for.pandoc {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Check for pandoc installation and its features</h2>
+
+<h3>Description</h3>
+
+<p>This function looks for a pandoc installation and if found, gathers information
+on its path, supported output formats, and the version number.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.check.for.pandoc(stop_if_missing = FALSE, output_format = NA)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>stop_if_missing</code></td>
+<td>
+<p>Logical,
+whether an error should be thrown if either pandoc can't be found at all
+or a requested output format is not supported.</p>
+</td></tr>
+<tr valign="top"><td><code>output_format</code></td>
+<td>
+<p>A character string,
+name of a requested output format. If not <code>NA</code>,
+the function will check if the format is supported and return a boolean value.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A named list with at least the boolean element <code>available</code>, and if
+that is <code>TRUE</code>, also the character vectors <code>path</code>, <code>output_formats</code>,
+and <code>version</code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Meik Michalke <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="rk.sessionInfo.html">rk.sessionInfo</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+rk.check.for.pandoc()
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

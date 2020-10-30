@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Miscellaneous utility functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.rename.in.container {rkward}"><tr><td>rk.rename.in.container {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Miscellaneous utility functions</h2>
+
+<h3>Description</h3>
+
+<p><code>rk.rename.in.container</code> renames a named object (column/element) in a
+data.frame/list without changing its position.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.rename.in.container(x, old_name, new_name, envir = parent.frame())
+
+rk.make.repos.string()
+
+rk.select.CRAN.mirror()
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a data.frame or list.</p>
+</td></tr>
+<tr valign="top"><td><code>old_name</code></td>
+<td>
+<p>a string, the name of the column or element to be renamed.</p>
+</td></tr>
+<tr valign="top"><td><code>new_name</code></td>
+<td>
+<p>a string, the new name.</p>
+</td></tr>
+<tr valign="top"><td><code>envir</code></td>
+<td>
+<p>an environment where <code>x</code> is available.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p><code>rk.make.repos.string</code> just creates a R statement for <code>repos</code>. A
+typical user should not need to use this function.
+</p>
+<p><code>rk.select.CRAN.mirror</code> is an in-house replacement for
+<code><a href="../../utils/html/chooseCRANmirror.html">chooseCRANmirror</a></code> without changing <code>options ("repos")</code>,
+permanently. It uses native KDE gui and provides more information on each
+mirror.
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>rk.rename.in.container</code> returns <code>NULL</code> on successfule
+renaming, otherwise an error.
+</p>
+<p><code>rk.make.repos.string</code> returns a valid R expression as a character
+string which can then be parsed and evaluated.
+</p>
+<p><code>rk.select.CRAN.mirror</code> returns the URL of the chosen mirror, as a
+string.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## rk.rename.in.container
+ir &lt;- iris
+str (ir)
+rk.rename.in.container(ir, "Species", "Taxonomic.Group")
+str (ir)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

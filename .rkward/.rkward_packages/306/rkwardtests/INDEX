@@ -1,0 +1,16 @@
+c("RKTestResult\n", "-class")
+                        S4 class RKTestResult
+c("RKTestSuite\n", "-class")
+                        S4 class RKTestSuite
+c("RKTest\n", "-class")
+                        S4 class RKTest
+rktest.getTempDir       Get path to the temporary directory
+rktest.makeplugintests
+                        Run RKWard plugin test suite
+rktest.replaceRunAgainLink
+                        Replace "Run again" link in RKWard
+rktest.runRKTestSuite   Run RKWard plugin test suite
+rktest.setSuiteStandards
+                        Set RKWard suite standards
+rkwardtests-package     RKWard Plugin Test Suite Framework.
+show                    show method for objects of class RKTestResult

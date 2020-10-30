@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Edit / show an object / file</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.edit {rkward}"><tr><td>rk.edit {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Edit / show an object / file</h2>
+
+<h3>Description</h3>
+
+<p><code>rk.edit</code> can be used to edit an object in the RKWard data editor.
+Currently only <a href="../../base/html/data.frame.html">data.frame</a>s are supported. This is similar to
+<a href="../../utils/html/edit.data.frame.html">edit.data.frame</a>, but the function returns immediately, and the object
+is edit asynchronously.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.edit(x)
+
+rk.edit.files(name = NULL, file = "", title = NULL, prompt = TRUE)
+
+rk.show.files(file = file, header = file, title = NULL,
+  delete.file = FALSE, prompt = TRUE, delete = delete.file)
+
+rk.show.html(url)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>an object to edit.</p>
+</td></tr>
+<tr valign="top"><td><code>file</code></td>
+<td>
+<p>character vector, filenames to show or edit.</p>
+</td></tr>
+<tr valign="top"><td><code>title</code></td>
+<td>
+<p>character vector, of the same length as <code>file</code>; This can
+be used to give descriptive titles to each file, which will be displayed
+to the user.</p>
+</td></tr>
+<tr valign="top"><td><code>prompt</code></td>
+<td>
+<p>logical of length 1. If TRUE (the default) a prompt is dialog
+is shown along with the files to show / edit.</p>
+</td></tr>
+<tr valign="top"><td><code>delete</code></td>
+<td>
+<p>a logical (not NA), when <code>TRUE</code> the shown file(s) are
+deleted after closing.</p>
+</td></tr>
+<tr valign="top"><td><code>wtitle</code></td>
+<td>
+<p>character vector, of length 1. This will be used as the window
+title.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p><code>rk.edit.files</code>, <code>rk.show.files</code>, and <code>rk.show.html</code> are
+equivalent to <a href="../../utils/html/edit.html">edit</a>, <a href="../../base/html/file.show.html">file.show</a>, and <a href="../../utils/html/browseURL.html">browseURL</a>,
+respectively, but use RKWard as text/html editor/viewer. Generally it is
+recommended to use <a href="../../utils/html/edit.html">edit</a>, <a href="../../utils/html/file.edit.html">file.edit</a>, <a href="../../base/html/file.show.html">file.show</a>,
+and <a href="../../utils/html/browseURL.html">browseURL</a>, instead. These will call the respective RKWard functions
+by default, when run inside an RKWard session. (via <code>getOption("editor")</code>,
+and <code>getOption("browser")</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>All functions described on this page return <code>NULL</code>,
+unconditionally.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../utils/html/edit.html">edit</a></code>, <code><a href="../../utils/html/file.edit.html">file.edit</a></code>,
+<code><a href="../../base/html/file.show.html">file.show</a></code>, <code><a href="../../utils/html/browseURL.html">browseURL</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run
+x &lt;- data.frame (a=c(1:3), b=c(2:4))
+rk.edit(x)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

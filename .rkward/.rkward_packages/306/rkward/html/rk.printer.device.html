@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Device for printing using the KDE print dialog</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.printer.device {rkward}"><tr><td>rk.printer.device {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Device for printing using the KDE print dialog</h2>
+
+<h3>Description</h3>
+
+<p>Creates a device operating on a temporary file (internally a
+<code><a href="../../grDevices/html/postscript.html">postscript</a></code>() device). When the device is closed, it is
+printed, automatically, using the KDE print dialog (if installed).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.printer.device(...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>arguments are passed to <code><a href="../../grDevices/html/postscript.html">postscript</a></code></p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Typically this device is used with <code><a href="../../grDevices/html/dev2.html">dev.print</a></code>, as shown in the
+example, below.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Returns the name of the underlying temporary file, invisibly.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../grDevices/html/postscript.html">postscript</a></code>, <code><a href="../../grDevices/html/dev2.html">dev.print</a></code>,
+<code><a href="rk.graph.on.html">rk.graph.on</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run:
+plot (rnorm (10))
+dev.print (rk.printer.device)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

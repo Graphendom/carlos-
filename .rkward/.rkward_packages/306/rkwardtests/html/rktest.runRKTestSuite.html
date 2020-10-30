@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Run RKWard plugin test suite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rktest.runRKTestSuite {rkwardtests}"><tr><td>rktest.runRKTestSuite {rkwardtests}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Run RKWard plugin test suite</h2>
+
+<h3>Description</h3>
+
+<p>Run a single RKWard plugin test suite
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  rktest.runRKTestSuite(suite, testroot=getwd(),
+    test.id=NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>suite</code></td>
+<td>
+<p>Character string naming the test suite to
+run.</p>
+</td></tr>
+<tr valign="top"><td><code>testroot</code></td>
+<td>
+<p>Defaults to the working directory.</p>
+</td></tr>
+<tr valign="top"><td><code>test.id</code></td>
+<td>
+<p>An optional character string or vector
+naming one or more tests of a suite to be run (if NULL,
+all tests are run).</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This function can be called to run a single plugin test
+suite.
+</p>
+
+
+<h3>Value</h3>
+
+<p>An object of class
+<code><a href="RKTestResult.html">RKTestResult-class</a></code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier
+<a href="mailto:thomas.friedrichsmeier@ruhr-uni-bochum.de">thomas.friedrichsmeier@ruhr-uni-bochum.de</a>, Meik
+Michalke <a href="mailto:meik.michalke@uni-duesseldorf.de">meik.michalke@uni-duesseldorf.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="RKTestSuite.html">RKTestSuite-class</a></code>,
+<code><a href="rktest.makeplugintests.html">rktest.makeplugintests</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+result &lt;- rktest.runRKTestSuite()
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkwardtests</em> version 0.6.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

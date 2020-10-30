@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: RKWard file names</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.get.tempfile.name {rkward}"><tr><td>rk.get.tempfile.name {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>RKWard file names</h2>
+
+<h3>Description</h3>
+
+<p>In RKWard the output is saved as a html file which is located at &quot;~/.rkward&quot;
+by default. (<b>TODO</b>: make this platform free). The name of this html
+file can be retrieved and set using <code>rk.get.output.html.file</code> and
+<code>rk.set.output.html.file</code>. <code>rk.flush.output.html.file</code> will delete 
+the current (or specified) html file, and re-initialize it.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.get.tempfile.name(prefix = "image", extension = ".jpg")
+
+rk.get.workspace.url()
+
+rk.get.output.html.file()
+
+rk.set.output.html.file(x,
+  additional.header.contents = getOption("rk.html.header.additions"),
+  style = c("regular", "preview"),
+  css = getOption("rk.output.css.file"), silent = FALSE)
+
+rk.flush.output(x = rk.get.output.html.file(), flush.images = TRUE,
+  ask = TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>prefix</code></td>
+<td>
+<p>a string, used as a filename prefix when saving images to the
+output file</p>
+</td></tr>
+<tr valign="top"><td><code>extension</code></td>
+<td>
+<p>a string, used as a filename extension when saving images
+to the output file</p>
+</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a string, giving the filename of the of the output file</p>
+</td></tr>
+<tr valign="top"><td><code>additional.header.contents</code></td>
+<td>
+<p>NULL or an additional string to add to the HTML header section.
+This could be scripts or additional CSS definitions, for example. Note that
+<em>nothing</em> will be added to the header, if the file already exists.</p>
+</td></tr>
+<tr valign="top"><td><code>style</code></td>
+<td>
+<p>Currently either &quot;regular&quot; or &quot;preview&quot;. The latter omits table of contents and date.</p>
+</td></tr>
+<tr valign="top"><td><code>css</code></td>
+<td>
+<p>Local file name of CSS file to use,
+or NULL for no CSS file. The CSS file will be
+placed next to x, with file name extension &quot;.css&quot;. Only effective when initializing a
+(non-existing) output file.</p>
+</td></tr>
+<tr valign="top"><td><code>silent</code></td>
+<td>
+<p>Set to true to avoid the output window being raised in the frontend.</p>
+</td></tr>
+<tr valign="top"><td><code>ask</code></td>
+<td>
+<p>Logical: Whether to ask before flushing the output file.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Further parameters passed to rk.set.output.html.file()</p>
+</td></tr>
+<tr valign="top"><td><code>flush.images.</code></td>
+<td>
+<p>If true, any images used in the output file will be deleted as well.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p><code>rk.get.tempfile.name</code> returns a non-existing filename inside the
+directory of the output file. It is mainly used by <a href="rk.graph.on.html">rk.graph.on</a> to
+create filenames suitable for storing images in the output. The filenames of
+the temporary files are of the form
+&quot;<code>prefix</code><em>xyz</em>.<code>extension</code>&quot;. <code>rk.get.tempfile.name</code> is
+somewhat misnamed. For truly temporary files, <a href="../../base/html/tempfile.html">tempfile</a> is generally
+more suitable.
+</p>
+<p><code>rk.get.workspace.url</code> returns the url of workspace file which has been
+loaded in RKWard, or NULL, if no workspace has been loaded. NOTE: This value
+is note affected by running <code>load</code> in R, only by loading R workspaces
+via the RKWard GUI.
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>rk.get.tempfile.name</code>, <code>rk.get.output.html.file</code>, and
+<code>rk.get.workspace.url</code> return a string while
+<code>rk.set.output.html.file</code> returns the <b>previous</b> output html file.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><a href="rkward://page/rkward_output">rkward://page/rkward_output</a>, <a href="../../base/html/tempfile.html">tempfile</a>, <a href="../../base/html/connections.html">file</a>,
+<a href="rk.results.html">rk.print</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+testfile.name &lt;- rk.get.tempfile.name(prefix="test", extension=".txt")
+testfile &lt;- file(testfile.name)
+cat("This is a test\n", file=testfile)
+close(testfile)
+unlink(testfile.name)
+
+outfile &lt;- rk.get.output.html.file()
+
+## Not run
+rk.set.output.html.file("~/.rkward/another_file.html")
+rk.header("Output on a different output file")
+rk.show.html(rk.get.output.html.file())
+rk.flush.output()
+rk.set.output.html.file(outfile)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Slightly smarter variant of old.packages()</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.old.packages {rkward}"><tr><td>rk.old.packages {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Slightly smarter variant of old.packages()</h2>
+
+<h3>Description</h3>
+
+<p>For most purposes, this function is identical to old.packages(). However, if the same
+package is installed to different locations, in different versions, old.packages() will
+treat each of these installations separately. Thus, e.g. if lib.loc == c(&quot;A&quot;, &quot;B&quot;) and
+package X is installed in B at an outdated version 0.1,
+but in A at the most recent version 0.2,
+old.packages() will report package X at B as old. In contrast rk.old.packages() will recognize
+that the current version is higher up in the path, and not report package X as old.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.old.packages(lib.loc = NULL, repos = getOption("repos"),
+  contriburl = contrib.url(repos, type),
+  instPkgs = installed.packages(lib.loc = lib.loc), method,
+  available = NULL, checkBuilt = FALSE, type = getOption("pkgType"))
+</pre>
+
+
+<h3>Value</h3>
+
+<p>a character vector of packages which are really old
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## NOT RUN
+rk.old.packages()
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

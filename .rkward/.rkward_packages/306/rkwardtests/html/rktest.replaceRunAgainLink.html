@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Replace &quot;Run again&quot; link in RKWard</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rktest.replaceRunAgainLink {rkwardtests}"><tr><td>rktest.replaceRunAgainLink {rkwardtests}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Replace &quot;Run again&quot; link in RKWard</h2>
+
+<h3>Description</h3>
+
+<p>Replace &quot;Run again&quot; link in RKWard with code
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  rktest.replaceRunAgainLink(restore=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>restore</code></td>
+<td>
+<p>Logical: If TRUE, restore the original
+behaviour.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>You can use this to temporarily replace
+.rk.rerun.plugin.link (see example below). This way,
+after running a plugin, you are shown the call needed to
+run this plugin with those settings, instead of the link.
+</p>
+<p>This code can be used in a plugin test suite.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Replaces the &quot;Run again&quot; link in RKWard with the code
+that would have been called, or vice versa.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier
+<a href="mailto:thomas.friedrichsmeier@ruhr-uni-bochum.de">thomas.friedrichsmeier@ruhr-uni-bochum.de</a>, Meik
+Michalke <a href="mailto:meik.michalke@uni-duesseldorf.de">meik.michalke@uni-duesseldorf.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="RKTestSuite.html">RKTestSuite-class</a></code>,
+<code><a href="rktest.makeplugintests.html">rktest.makeplugintests</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+rktest.replaceRunAgainLink()
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkwardtests</em> version 0.6.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

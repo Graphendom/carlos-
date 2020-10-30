@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Manage (shortly) persistent data for previews (for use in...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.assign.preview.data {rkward}"><tr><td>rk.assign.preview.data {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Manage (shortly) persistent data for previews (for use in RKWard plugins wishing to provide custom previews)</h2>
+
+<h3>Description</h3>
+
+<p><code>rk.assign.preview.data</code> stores data associated with a specific &quot;id&quot;. Usually this id is
+provided by the &lt;preview&gt;-feature of a plugin.
+<code>rk.get.preview.data</code> retrieves data previously stored with <code>rk.assign.preview.data</code>
+<code>rk.discard.preview.data</code> discards data previously stored with <code>rk.assign.preview.data</code>.
+This gets called by the &lt;preview&gt;-box of the plugin, automtically,
+when the plugin dialog is closed.
+You do not generally have to call it manually. See the notes for running custom clearnup code,
+below.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.assign.preview.data(id, value = list())
+
+rk.get.preview.data(id)
+
+rk.discard.preview.data(id)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>id</code></td>
+<td>
+<p>(character). Id associated with the data. Usually this will be the 'id' value of the &lt;preview&gt;-box.</p>
+</td></tr>
+<tr valign="top"><td><code>value.</code></td>
+<td>
+<p>The value to assign. If this is a list,
+and contains a function named &quot;on.delete&quot;, this function
+will be run by rk.discard.preview.data (with the <code>id</code> as argument. This is useful for running custom clearnup
+code, such as removing temporary files, etc.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p><code>rk.assign.preview.data</code> amd <code>rk.get.preview.data</code> returns the preview data (newly) associated
+with the given id. <code>rk.discard.preview.data</code> returns <code>NULL</code>, invisibly.
+</p>
+<p><b>Note</b>: Plugins that want to produce a single plot,
+or open a single object via <code><a href="rk.edit.html">rk.edit</a>()</code> do <b>not</b>
+have to call these functions,
+manually. See the chapter on providing previews in the Introduction to
+writing plugins for RKWard.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## To be generated in the preview() code section of a plugin
+
+## NOT RUN
+pdata &amp;lt;- rk.get.preview.data("SOMEID")
+if (is.null (pdata)) {
+  outfile &amp;lt;- rk.get.tempfile.name(prefix="preview", extension=".txt")
+  pdata &amp;lt;- list(filename=outfile, on.delete=function (id) {
+    unlink(rk.get.preview.data(id)$filename)
+  })
+  rk.assign.preview.data("SOMEID", pdata)
+}
+try ({
+  cat ("This is a test", pdata$filename)
+  rk.edit.files(file=pdata$filename)
+})
+## END NOT RUN
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

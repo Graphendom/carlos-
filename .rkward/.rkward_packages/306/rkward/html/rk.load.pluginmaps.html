@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: (Re-)load the given pluginmap files into the RKWard GUI</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.load.pluginmaps {rkward}"><tr><td>rk.load.pluginmaps {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>(Re-)load the given pluginmap files into the RKWard GUI</h2>
+
+<h3>Description</h3>
+
+<p>(Re-)load the given pluginmap files into the RKWard GUI
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.load.pluginmaps(pluginmap.files = NULL, force.add = TRUE,
+  force.reload = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>pluginmap.files</code></td>
+<td>
+<p>a character vector of file names to add. This may be left empty,
+if the only desired effect is to reload all active pluginmaps.</p>
+</td></tr>
+<tr valign="top"><td><code>force.add</code></td>
+<td>
+<p>logical. Whether the pluginmap files should also be added, if they had
+been previously de-selected in the settings menu, and regardless of their
+priority setting. In scripted usage, this should generally be set to FALSE.</p>
+</td></tr>
+<tr valign="top"><td><code>force.reload</code></td>
+<td>
+<p>logical. By default the active pluginmaps are reloaded,
+only if any new ones
+were added. If set to TRUE, pluginmaps are reloaded in any case. In
+scripted usage, this should generally be set to FALSE. NOTE: Since
+a reload always means reloading _all_ active pluginmaps, This may be
+slow, and should be used with care.
+</p>
+<p><b>Note</b>: It is not necessary to reload the pluginmap,
+in order to refresh an individual
+plugin (e.g. after modifying the dialog),
+as plugins are not kept in memory after closing.
+Any currently opened plugins are not affected by this function.</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="rk.call.plugin.html">rk.call.plugin</a></code>, @seealso <code>rkwarddev::rk.plugin.skeleton</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## NOT RUN
+
+## reload all active pluginmaps
+rk.load.pluginmaps()
+
+## END NOT RUN
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

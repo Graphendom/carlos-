@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Message boxes and selection list using native KDE GUI</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.show.message {rkward}"><tr><td>rk.show.message {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Message boxes and selection list using native KDE GUI</h2>
+
+<h3>Description</h3>
+
+<p>Multi-purpose pop-up message boxes and selection list using native KDE GUI
+elements. The message boxes can be used either to show some information or
+ask some question. The selection list can be used to get a vector of
+selected items.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.show.message(message, caption = gettext("Information"), wait = TRUE)
+
+rk.show.question(message, caption = gettext("Question"),
+  button.yes = "yes", button.no = "no", button.cancel = "cancel",
+  default = TRUE)
+
+rk.askYesNo(msg, default = TRUE, prompts = c("yes", "no", "cancel"),
+  caption = gettext("Question"), is.rk.askYesNo = TRUE, ...)
+
+rk.select.list(list, preselect = NULL, multiple = FALSE,
+  title = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>message</code></td>
+<td>
+<p>a string for the content of the message box.</p>
+</td></tr>
+<tr valign="top"><td><code>caption</code></td>
+<td>
+<p>a string for title of the message box.</p>
+</td></tr>
+<tr valign="top"><td><code>wait</code></td>
+<td>
+<p>a logical (not NA) indicating whether the R interpreter should
+wait for the user's action, or run it asynchronously.</p>
+</td></tr>
+<tr valign="top"><td><code>button.yes</code></td>
+<td>
+<p>a string for the text label of the <b>Yes</b> button. Can
+be an empty string (<code>""</code>), in which case the button is not displayed
+at all. Note that the default value of &quot;yes&quot; (lower case) means to use a default
+rendering of a &quot;Yes&quot; button, which may or may not be the literal string &quot;Yes&quot;
+(importantly, it will be translated, automatically).</p>
+</td></tr>
+<tr valign="top"><td><code>button.no</code></td>
+<td>
+<p>a string used for the text label of the <b>No</b> button.
+This behaves similar to <code>button.yes</code>, including the meaning of the
+default value &quot;no&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>button.cancel</code></td>
+<td>
+<p>a string used for the text label of the <b>Cancel</b> button.
+This behaves similar to <code>button.yes</code>, including the meaning of the
+default value &quot;cancel&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>default</code></td>
+<td>
+<p>The expected or &quot;safe&quot; default response (e.g. <code>TRUE</code> for &quot;Yes button&quot;).
+The corresponding button will focused, so that it will become selected option,
+if the user simply presses enter.</p>
+</td></tr>
+<tr valign="top"><td><code>msg</code></td>
+<td>
+<p>like <code>message</code>, only the argument was renamed to mimic the formals of
+<code>askYesNo</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>prompts</code></td>
+<td>
+<p>either a character vector containing 3 prompts corresponding to return
+values of TRUE, FALSE, or NA, or a single character value containing the prompts
+separated by <code>/</code> characters.</p>
+</td></tr>
+<tr valign="top"><td><code>is.rk.askYesNo</code></td>
+<td>
+<p>a logical value, you can safely ignore this argument if you call
+<code>rk.askYesNo</code> manually. This argument is needed if <code>rk.askYesNo</code> is set
+via <code>options("askYesNo"=rk.askYesNo)</code> because otherwise we'd either need more
+complicated function code there, fail with an error or end up in an infinite loop.</p>
+</td></tr>
+<tr valign="top"><td><code>list</code></td>
+<td>
+<p>a vector, coerced into a character vector.</p>
+</td></tr>
+<tr valign="top"><td><code>multiple</code></td>
+<td>
+<p>a logical (not NA), when <code>TRUE</code> multiple selection
+selection is allowed.</p>
+</td></tr>
+<tr valign="top"><td><code>title</code></td>
+<td>
+<p>a string, for the window title of the displayed list</p>
+</td></tr>
+<tr valign="top"><td><code>preselct</code></td>
+<td>
+<p>a vector, coerced into a character vector, items to be
+preselected.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>For <code>rk.show.question</code>, the R interpreter always waits for the user's
+choice.
+</p>
+<p><code>rk.select.list</code> replaces <code>utils::select.list</code> for the running
+session acting as a drop-in replacement for <code>tk_select.list</code>. Use
+<code>.rk.backups$select.list</code> for the original <code>utils::select.list</code>
+function (see Examples).
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>rk.show.message</code> always returns <code>TRUE</code>, invisibly.
+</p>
+<p><code>rk.show.question</code> returns <code>TRUE</code> for <b>Yes</b>, <code>FALSE</code> for
+<b>No</b>, and <code>NULL</code> for <b>Cancel</b> actions. If the dialog is closed
+without clicking on any button, <code>NULL</code> is returned, as well.
+</p>
+<p><code>rk.askYesNo</code> has the same return values as <code>rk.show.question</code>, except
+it returns <code>NA</code> for <b>Cancel</b> actions.
+</p>
+<p><code>rk.select.list</code> returns the value of <code><a href="../../utils/html/select.list.html">select.list</a></code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../base/html/system.html">system</a></code>, <code><a href="../../utils/html/select.list.html">select.list</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+require (rkward)
+
+## Message boxes
+if (rk.show.question ("Question:\nDo you want to know about RKWard?", 
+    button.yes = "Yes, I do!", button.no = "No, I don't care!", button.cancel = "")) {
+  rk.show.message ("Message:\nRKWard is a KDE GUI for R.", "RKWard Info")
+} else {
+  rk.show.message ("You must be joking!", "RKWard Info",
+      wait = FALSE) ## Run asynchronously
+}
+
+## Selection lists:
+rk.select.list (LETTERS, preselect = c("A", "E", "I", "O", "U"), 
+  multiple = TRUE, title = "vowels")
+.rk.backups$select.list (LETTERS, preselect = c("A", "E", "I", "O", "U"), 
+  multiple = TRUE, title = "vowels")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

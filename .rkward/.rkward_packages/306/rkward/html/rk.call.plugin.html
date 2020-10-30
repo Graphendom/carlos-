@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Call built-in RKWard plugin(s)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rk.call.plugin {rkward}"><tr><td>rk.call.plugin {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Call built-in RKWard plugin(s)</h2>
+
+<h3>Description</h3>
+
+<p><code>rk.call.plugin</code> provides a high level wrapper to call any plugin
+available in RKWard. The exact string to be used as <code>plugin</code>, and the
+list of arguments available for a particular plugin, are generally not
+transparent to the user. <code>rk.list.plugins</code> can be used to obtain a list
+of current plugins. For plugin arguments, it is recommended to run the
+plugin, and inspect the &quot;Run again&quot; link that is generated on the output.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rk.call.plugin(plugin, ..., submit.mode = c("manual", "auto", "submit"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>plugin</code></td>
+<td>
+<p>character string, giving the name of the plugin to call. See
+Details.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>arguments passed to the <code>plugin</code></p>
+</td></tr>
+<tr valign="top"><td><code>submit.mode</code></td>
+<td>
+<p>character string, specifying the submission mode:
+<code>"manual"</code> will open the plugin GUI and leave it to the user to
+submit it manually, <code>"auto"</code> will try to submit the plugin, if it can
+be submitted with the current settings (i.e. if the &quot;Submit&quot;-button is
+enabled after applying all specified parameters). If the plugin cannot be
+submitted, with the current settings, it will behave like <code>"manual"</code>.
+<code>"submit"</code> is like <code>"auot"</code>, but will close the plugin, and
+generate an error, if it cannot be submitted. <code>"manual"</code> will always
+return immediately, <code>"auto"</code> may or may not return immediately, and
+<code>"submit"</code> will always wait until the plugin has been run, or produce
+an error.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p><b>Warning</b>: Using <code>rk.call.plugin</code>, especially with submit.modes
+<code>"auto"</code> or <code>"submit"</code> to program a sequence of analyses has
+important drawbacks. First, the semantics of plugins are not guaranteed to
+remain unchanged across different versions of RKWard, thus your code may
+stop working after an upgrade. Second, your code will not be usable outside
+of an RKWard session. Consider copying the generated code for each plugin,
+instead. The primary use-cases for <code>rk.call.plugin</code> are automated
+tests, cross-references, and scripted tutorials.
+</p>
+<p><b>Note</b>: Even when using <code>"submit.mode=submit"</code>, the plugin code is
+run in the global context. Any local variables of the calling context are
+not available to the plugin.
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>rk.call.plugin</code> returns <code>TRUE</code> invisibly.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Thomas Friedrichsmeier <a href="mailto:rkward-devel@kde.org">rkward-devel@kde.org</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="rk.results.html">rk.results</a></code>, <a href="rkward://page/rkward_output">rkward://page/rkward_output</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## "t_test_two_vars" plugin:
+## see the output: Windows-&gt;Show Output
+local({
+x1 &lt;- rnorm (100)
+x2 &lt;- rnorm (100, 2)
+
+rk.call.plugin ("rkward::t_test_two_vars", 
+  confint.state="1", conflevel.real="0.95", hypothesis.string="greater", paired.state="0",
+      varequal.state="0", 
+  x.available="x1", y.available="x2", 
+  submit.mode="submit")
+})
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

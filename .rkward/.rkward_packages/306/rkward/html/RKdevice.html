@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot graphics to RKWard native device</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for RK {rkward}"><tr><td>RK {rkward}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Plot graphics to RKWard native device</h2>
+
+<h3>Description</h3>
+
+<p><code>RK()</code> creates an R on-screen device that will be rendered in the RKWard frontend. 
+The default settings for <code>width</code>,
+and <code>height</code> can be modified from Settings -&gt; Configure RKWard -&gt; Onscreen Graphics.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+RK(width = getOption("rk.screendevice.width"),
+  height = getOption("rk.screendevice.height"), pointsize = 12,
+  family = NULL, bg = "white", title = "", antialias = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>Width of the device in inches. The default is to use the heigth configured in Settings -&gt; Configure RKWard -&gt; Onscreen Graphics.</p>
+</td></tr>
+<tr valign="top"><td><code>height</code></td>
+<td>
+<p>Height of the device in inchesgraphics in pixels. The default is to use the heigth configured in Settings -&gt; Configure RKWard -&gt; Onscreen Graphics.</p>
+</td></tr>
+<tr valign="top"><td><code>pointsize</code></td>
+<td>
+<p>Default pointsize</p>
+</td></tr>
+<tr valign="top"><td><code>family</code></td>
+<td>
+<p>Default font family. This can be a character vector of length 1 or 2. The second value is used for
+plotting symbols. Effectively the default is c(&quot;Helvetica&quot;,
+&quot;Symbol&quot;). A wide variety of sepcification is supported,
+including the device independent fonts names &quot;sans&quot;, &quot;serif&quot;, and &quot;mono&quot;</p>
+</td></tr>
+<tr valign="top"><td><code>bg</code></td>
+<td>
+<p>Background color.</p>
+</td></tr>
+<tr valign="top"><td><code>title</code></td>
+<td>
+<p>Window title.</p>
+</td></tr>
+<tr valign="top"><td><code>antialias</code></td>
+<td>
+<p>Antialiasing. Can be turned off for somewhat faster drawing.</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>rkward</em> version 0.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>
