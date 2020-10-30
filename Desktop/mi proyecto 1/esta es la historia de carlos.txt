@@ -2,3 +2,5 @@ esta el la historia de carlos
 tiene 21 anos.
 
 trabaja en el grupo exito.
+quiere aprender los que es python.
+y pandas.
